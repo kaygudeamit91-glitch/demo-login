@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Poultry Form</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #f5fff7, #eafaf1 40%, #ecf9ff);
+      padding: 24px;
+    }
+
+    .container {
+      width: min(100%, 1100px);
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid #dfeee4;
+      border-radius: 24px;
+      box-shadow: 0 18px 40px rgba(18, 92, 45, 0.12);
+      overflow: hidden;
+    }
+
+    .header {
+      background: linear-gradient(90deg, #1d6f3d, #2f9d5b);
+      color: white;
+      padding: 28px 36px;
+    }
+
+    .header h1 {
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      margin-bottom: 8px;
+    }
+
+    .header p {
+      opacity: 0.9;
+      font-size: 0.98rem;
+    }
+
+    form {
+      padding: 30px 36px 36px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(240px, 1fr));
+      gap: 22px 26px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #294d39;
+    }
+
+    input,
+    select,
+    textarea,
+    button {
+      border-radius: 12px;
+      border: 1px solid #cfe3d4;
+      font-size: 1rem;
+      padding: 12px 14px;
+      transition: 0.2s ease;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: none;
+      border-color: #2f9d5b;
+      box-shadow: 0 0 0 4px rgba(47, 157, 91, 0.12);
+    }
+
+    textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .checkbox-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+      padding-top: 4px;
+    }
+
+    .checkbox-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.95rem;
+      color: #234e38;
+      background: #f4fbf6;
+      border: 1px solid #d5ebdc;
+      border-radius: 10px;
+      padding: 8px 10px;
+    }
+
+    .checkbox-item input {
+      width: 16px;
+      height: 16px;
+      accent-color: #2f9d5b;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 14px;
+      margin-top: 28px;
+      padding-top: 18px;
+      border-top: 1px solid #e4efe8;
+    }
+
+    .btn {
+      border: none;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 12px 22px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(90deg, #1d6f3d, #2f9d5b);
+      color: white;
+      box-shadow: 0 10px 18px rgba(34, 122, 67, 0.22);
+    }
+
+    .btn-secondary {
+      background: #edf6ef;
+      color: #1f4d35;
+      border: 1px solid #d6e8dc;
+    }
+
+    @media (max-width: 720px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .header,
+      form {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .actions {
+        flex-direction: column-reverse;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Poultry Farm Registration</h1>
+      <p>Enter the details for your poultry flock and farm management record.</p>
+    </div>
+
+    <form>
+      <div class="grid">
+        <div class="field">
+          <label for="farmerName">Farmer Name</label>
+          <input id="farmerName" type="text" placeholder="Enter farmer name" />
+        </div>
+
+        <div class="field">
+          <label for="farmName">Farm Name</label>
+          <input id="farmName" type="text" placeholder="Enter farm name" />
+        </div>
+
+        <div class="field">
+          <label for="phone">Phone Number</label>
+          <input id="phone" type="tel" placeholder="+234 800 000 0000" />
+        </div>
+
+        <div class="field">
+          <label for="email">Email Address</label>
+          <input id="email" type="email" placeholder="farmer@email.com" />
+        </div>
+
+        <div class="field full">
+          <label for="address">Farm Address</label>
+          <input id="address" type="text" placeholder="Village / Town / District / State" />
+        </div>
+
+        <div class="field">
+          <label for="poultryType">Poultry Type</label>
+          <select id="poultryType">
+            <option value="">Select</option>
+            <option>Broiler</option>
+            <option>Layer</option>
+            <option>Breeder</option>
+            <option>Turkey</option>
+            <option>Duck</option>
+            <option>Goose</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="flockSize">Flock Size</label>
+          <input id="flockSize" type="number" min="1" placeholder="e.g. 250" />
+        </div>
+
+        <div class="field">
+          <label for="age">Bird Age (Weeks)</label>
+          <input id="age" type="number" min="1" placeholder="e.g. 8" />
+        </div>
+
+        <div class="field">
+          <label for="housing">Housing System</label>
+          <select id="housing">
+            <option value="">Select</option>
+            <option>Deep Litter</option>
+            <option>Cage System</option>
+            <option>Free Range</option>
+            <option>Battery Cage</option>
+            <option>Open Shed</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="feedType">Feed Type</label>
+          <select id="feedType">
+            <option value="">Select</option>
+            <option>Starter Feed</option>
+            <option>Grower Feed</option>
+            <option>Layer Mash</option>
+            <option>Broiler Feed</option>
+            <option>Organic Feed</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="vaccination">Vaccination Status</label>
+          <select id="vaccination">
+            <option value="">Select</option>
+            <option>Up to Date</option>
+            <option>Partially Done</option>
+            <option>Not Started</option>
+            <option>Need Review</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="healthStatus">Health Status</label>
+          <select id="healthStatus">
+            <option value="">Select</option>
+            <option>Excellent</option>
+            <option>Good</option>
+            <option>Moderate</option>
+            <option>Critical</option>
+          </select>
+        </div>
+
+        <div class="field full">
+          <label>Biosecurity & Management Checks</label>
+          <div class="checkbox-row">
+            <label class="checkbox-item"><input type="checkbox" /> Clean Water</label>
+            <label class="checkbox-item"><input type="checkbox" /> Proper Ventilation</label>
+            <label class="checkbox-item"><input type="checkbox" /> Daily Feeding</label>
+            <label class="checkbox-item"><input type="checkbox" /> Disease Monitoring</label>
+            <label class="checkbox-item"><input type="checkbox" /> Litter Management</label>
+          </div>
+        </div>
+
+        <div class="field full">
+          <label for="notes">Additional Notes</label>
+          <textarea id="notes" placeholder="Add any information about flock health, feeding schedule, medication, egg production, or farm observations..."></textarea>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button type="reset" class="btn btn-secondary">Reset</button>
+        <button type="submit" class="btn btn-primary">Submit Record</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
